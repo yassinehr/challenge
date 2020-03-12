@@ -9,6 +9,8 @@
     <input type="text" name="description" value="{{ old('description') ?? $challenge->description }}" class="form-control">
     <div>{{ $errors->first('description') }}</div>
 </div>
+<div class="form-group">
+
 <select name="status" id="status" class="form-control">
     <option value="" disabled>Select challenge status</option>
 
@@ -16,6 +18,9 @@
         <option value="{{ $statusOptionKey }}" {{ $challenge->status == $statusOptionValue ? 'selected' : '' }}>{{ $statusOptionValue }}</option>
     @endforeach
 </select>
+</div>
+<div>{{ $errors->first('status') }}</div>
+
 <div class="form-group">
     <label for="start">start date</label>
     <input type="date"  name="start"  value="{{ old('start') ?? $challenge->start }}" class="form-control">

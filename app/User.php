@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','status','authority'
     ];
 
     protected $attributes = [
@@ -25,9 +25,9 @@ class User extends Authenticatable
         'authority' => 1
     ];
 
-    public function getStatusAttribute($attribute)
+    public function getStatusAttribute($attributes)
     {
-        return $this->statusOptions()[$attribute];
+        return $this->statusOptions()[$attributes];
     }
 
     public function getAuthorityAttribute($authorityAttributes)

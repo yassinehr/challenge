@@ -19,6 +19,7 @@
         <option value="{{ $statusOptionKey }}" {{ $user->status == $statusOptionValue ? 'selected' : '' }}>{{ $statusOptionValue }}</option>
     @endforeach
 </select>
+
 </div>
 <div class="form-group">
     <label for="authority">authority</label>
@@ -30,6 +31,7 @@
         <option value="{{ $authorityOptionKey }}" {{ $user->authority == $authorityOptionValue ? 'selected' : '' }}>{{ $authorityOptionValue }}</option>
     @endforeach
 </select>
+
 </div>
 
 @csrf

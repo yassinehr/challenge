@@ -88,6 +88,7 @@ class UsersController extends Controller
     {
         //
         $user->update($this->validateRequest());
+        //dd($user);
         return redirect('users/' . $user->id);
     }
 

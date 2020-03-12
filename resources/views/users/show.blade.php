@@ -5,7 +5,7 @@
 @section('content')
     <div class="row">
         <div class="col-12">
-            <h1>Details for {{ $user->title }}</h1>
+            <h1>Details for {{ $user->name }}</h1>
             <p><a href="{{ route('users.edit', ['user' => $user]) }}">Edit</a></p>
 
             <form action="{{ route('users.destroy', ['user' => $user]) }}" method="POST">
