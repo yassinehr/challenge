@@ -109,6 +109,17 @@ class SubmitsController extends Controller
         return view('submits.edit', compact('idChallenge', 'code'));
     }
 
+    public function userInformation($id)
+    {
+        return User::findOrFail($id);
+    }
+
+    public function challengeInformation($id)
+    {
+        return Challenge::findOrFail($id);
+    }
+
+
     /**
      * Update the specified resource in storage.
      *

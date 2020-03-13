@@ -3,6 +3,7 @@
 @section('title', 'Submits List')
 
 @section('content')
+@inject('submit', 'App\Http\Controllers\SubmitsController')
 
     <div class="row">
         <div class="col-12">
@@ -43,10 +44,10 @@
     @foreach($challenges as $challenge)
         <div class="row">
             <div class="col-2">
-                {{$challenge->user_id }}
+                {{ $submit->userInformation($challenge->user_id )->name}}
             </div>
 
-            <div class="col-2">{{ $challenge->challenge_id }}</div>
+            <div class="col-2">{{$submit->challengeInformation($challenge->challenge_id)->title }}</div>
             <div class="col-2">{{ $challenge->code }}</div>
 
         </div>
