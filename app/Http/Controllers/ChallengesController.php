@@ -29,7 +29,7 @@ class ChallengesController extends Controller
 
         //  $challenges = Challenge::paginate(10);
         $challenges = QueryBuilder::for(Challenge::class)
-            ->allowedFilters(['title', 'start'])
+            ->allowedFilters(['title', 'start','status'])
             ->paginate(10);
 
         //print_r($challenges);
@@ -41,11 +41,13 @@ class ChallengesController extends Controller
     public function filter(Request $request)
     {
         $this->authorize('create', Challenge::class);
-
         $titleChallenge = $request->input('title');
         $startChallenge = $request->input('start');
+        $statusChallenge = $request->input('status');
         $txtTitle = null;
         $txtStart = null;
+        $txtStatus = null;
+
         if (!empty($titleChallenge)) {
             $txtTitle = '&filter[title]=' . $titleChallenge;
         }
@@ -53,12 +55,12 @@ class ChallengesController extends Controller
         if (!empty($startChallenge)) {
             $txtStart = '&filter[start]=' . $startChallenge;
         }
+        if (!empty($statusChallenge)) {
+            $txtStatus = '&filter[status]=' . $statusChallenge;
+        }
 
 
-
-
-
-        return redirect('challenges?' . $txtTitle . $txtStart);
+        return redirect('challenges?' . $txtTitle . $txtStart . $txtStatus);
     }
 
     /**
@@ -118,7 +120,7 @@ class ChallengesController extends Controller
     public function edit(Challenge $challenge)
     {
         //
-      //  $this->authorize('create', $challenge);
+        //  $this->authorize('create', $challenge);
 
         return view('challenges.edit', compact('challenge'));
     }
@@ -133,7 +135,7 @@ class ChallengesController extends Controller
     public function update(Challenge $challenge)
     {
         //
-       // $this->authorize('update',  $challenge);
+        // $this->authorize('update',  $challenge);
         $challenge->update($this->validateRequest());
         return redirect('challenges/' . $challenge->id);
     }

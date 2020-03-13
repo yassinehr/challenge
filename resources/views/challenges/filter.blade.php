@@ -7,6 +7,14 @@
     </div>
 
     <div class="form-group">
+        <label for="status">status</label>
+          <select name="status" id="status" >
+            <option value="" disabled>Select challenge status</option>
+            <option value="0">ongoing</option>
+            <option value="1">done</option>
+        </select>
+    </div>
+    <div class="form-group">
         <label for="start">start date</label>
         <input type="date"  name="start" id="start"  align="right">
     </div>
