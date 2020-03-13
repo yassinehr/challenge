@@ -10,12 +10,15 @@
             <h1>Challenge List</h1>
         </div>
     </div>
+    @can('restore', App\Challenge::class)
 
         <div class="row">
             <div class="col-12">
                 <p><a href="{{ route('submits.create') }}">Add New Submit</a></p>
             </div>
         </div>
+        @endcan
+
     @can('restore', App\Challenge::class)
 
     @foreach($challenges as $challenge)
