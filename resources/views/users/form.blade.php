@@ -19,6 +19,7 @@
         <option value="{{ $statusOptionKey }}" {{ $user->status == $statusOptionValue ? 'selected' : '' }}>{{ $statusOptionValue }}</option>
     @endforeach
 </select>
+<div>{{ $errors->first('status') }}</div>
 
 </div>
 <div class="form-group">
@@ -31,6 +32,7 @@
         <option value="{{ $authorityOptionKey }}" {{ $user->authority == $authorityOptionValue ? 'selected' : '' }}>{{ $authorityOptionValue }}</option>
     @endforeach
 </select>
+<div>{{ $errors->first('authority') }}</div>
 
 </div>
 

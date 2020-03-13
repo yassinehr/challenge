@@ -28,7 +28,8 @@ class Challenge extends Model
     {
         return $query->where('status', 0);
     }
-    public function userInformation($id){
+    public function userInformation($id)
+    {
         return User::findOrFail($id);
     }
 

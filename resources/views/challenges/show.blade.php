@@ -4,9 +4,14 @@
 
 @section('content')
     <div class="row">
+
         <div class="col-12">
             <h1>Details for {{ $challenge->title }}</h1>
+            @can('update', App\Challenge::class)
+
             <p><a href="{{ route('challenges.edit', ['challenge' => $challenge]) }}">Edit</a></p>
+            @endcan
+            @can('delete', App\Challenge::class)
 
             <form action="{{ route('challenges.destroy', ['challenge' => $challenge]) }}" method="POST">
                 @method('DELETE')
@@ -14,6 +19,7 @@
 
                 <button class="btn btn-danger" type="submit">Delete</button>
             </form>
+            @endcan
         </div>
     </div>
 

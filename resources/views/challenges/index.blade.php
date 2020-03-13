@@ -9,12 +9,14 @@
             <h1>Challenge List</h1>
         </div>
     </div>
+    @can('create', App\Challenge::class)
 
         <div class="row">
             <div class="col-12">
                 <p><a href="{{ route('challenges.create') }}">Add New Challenge</a></p>
             </div>
         </div>
+        @endcan
 
         @include('challenges.filter')
 

@@ -25,6 +25,8 @@ class ChallengesController extends Controller
      */
     public function index()
     {
+
+
         //  $challenges = Challenge::paginate(10);
         $challenges = QueryBuilder::for(Challenge::class)
             ->allowedFilters(['title', 'start'])
@@ -38,6 +40,7 @@ class ChallengesController extends Controller
 
     public function filter(Request $request)
     {
+        $this->authorize('create', Challenge::class);
 
         $titleChallenge = $request->input('title');
         $startChallenge = $request->input('start');
@@ -65,6 +68,7 @@ class ChallengesController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Challenge::class);
 
         $challenge = new Challenge();
         return view('challenges.create', compact('challenge'));
@@ -78,6 +82,8 @@ class ChallengesController extends Controller
      */
     public function store()
     {
+
+        $this->authorize('create', Challenge::class);
 
         Log::info('Showing user profile for user: ');
 
@@ -97,6 +103,9 @@ class ChallengesController extends Controller
     public function show(Challenge $challenge)
     {
         //
+
+        //$this->authorize('create', Challenge::class);
+
         return view('challenges.show', compact('challenge'));
     }
 
@@ -109,6 +118,7 @@ class ChallengesController extends Controller
     public function edit(Challenge $challenge)
     {
         //
+      //  $this->authorize('create', $challenge);
 
         return view('challenges.edit', compact('challenge'));
     }
@@ -123,7 +133,7 @@ class ChallengesController extends Controller
     public function update(Challenge $challenge)
     {
         //
-
+       // $this->authorize('update',  $challenge);
         $challenge->update($this->validateRequest());
         return redirect('challenges/' . $challenge->id);
     }
@@ -137,6 +147,7 @@ class ChallengesController extends Controller
     public function destroy(Challenge $challenge)
     {
         //
+        //$this->authorize('create',  $challenge);
 
         $challenge->delete();
 
