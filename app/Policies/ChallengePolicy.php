@@ -32,7 +32,7 @@ class ChallengePolicy
     {
         //
         return in_array($user->authority, [
-            '1','0','2'
+            'admin','organizer','participant'
         ]);
     }
 
@@ -45,10 +45,13 @@ class ChallengePolicy
     public function create(User $user)
     {
         //
+       // dd(in_array($user->authority, [ '1','0']));
 
         return in_array($user->authority, [
-            '1','0'
+            'admin','organizer'
         ]);
+
+
     }
 
     /**
@@ -62,7 +65,7 @@ class ChallengePolicy
     {
         //
         return in_array($user->authority, [
-            '1','0'
+            'admin','organizer'
         ]);
     }
 
@@ -77,7 +80,7 @@ class ChallengePolicy
     {
         //
         return in_array($user->authority, [
-            '1','0'
+            'admin','organizer'
         ]);
     }
 

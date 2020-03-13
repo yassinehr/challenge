@@ -27,9 +27,12 @@ class UserPolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function view(User $user, User $model)
+    public function view(User $user)
     {
         //
+        return in_array($user->authority, [
+            'admin','organizer'
+        ]);
     }
 
     /**
@@ -41,6 +44,9 @@ class UserPolicy
     public function create(User $user)
     {
         //
+        return in_array($user->authority, [
+            'admin','organizer'
+        ]);
     }
 
     /**
@@ -50,9 +56,12 @@ class UserPolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function update(User $user, User $model)
+    public function update(User $user)
     {
         //
+        return in_array($user->authority, [
+            'admin','organizer'
+        ]);
     }
 
     /**
@@ -62,9 +71,12 @@ class UserPolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function delete(User $user, User $model)
+    public function delete(User $user)
     {
         //
+        return in_array($user->authority, [
+            'admin','organizer'
+        ]);
     }
 
     /**

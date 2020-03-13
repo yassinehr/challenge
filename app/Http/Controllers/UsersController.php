@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Challenge;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -21,6 +22,8 @@ class UsersController extends Controller
     public function index()
     {
         //
+        $this->authorize('view', User::class);
+
 
         $users = User::paginate(10);
         //print_r($users);
@@ -46,6 +49,8 @@ class UsersController extends Controller
     public function store()
     {
         //
+        $this->authorize('create', User::class);
+
 
         $user = User::create($this->validateRequest());
         // dd($challenge);
@@ -62,6 +67,8 @@ class UsersController extends Controller
     public function show(User $user)
     {
         //
+        $this->authorize('view', $user);
+
         return view('users.show', compact('user'));
     }
 
@@ -74,6 +81,8 @@ class UsersController extends Controller
     public function edit(User $user)
     {
         //
+        $this->authorize('edit', $userr);
+
         return view('users.edit', compact('user'));
     }
 
@@ -87,6 +96,8 @@ class UsersController extends Controller
     public function update(User $user)
     {
         //
+        $this->authorize('edit', $user);
+
         $user->update($this->validateRequest());
         //dd($user);
         return redirect('users/' . $user->id);
@@ -101,6 +112,7 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         //
+        $this->authorize('delete', user);
 
         $user->delete();
 
