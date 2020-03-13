@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Challenge;
+use App\ChallengeUser;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class SubmitsController extends Controller
 {
@@ -31,7 +33,15 @@ class SubmitsController extends Controller
         //challenge for connected user
         $idUser = Auth::id();;
         $userToFind = User::find($idUser);
-        $challenges = $userToFind->challenges;
+        //dd($userToFind->authority);
+        if($userToFind->authority=='participant'){
+            $challenges = $userToFind->challenges;
+
+        }
+        else{
+            $challenges = DB::table('challenge_user')->get();
+            //dd($challenges);
+        }
 
 
         //$challenges = Challenge::all();
@@ -39,6 +49,8 @@ class SubmitsController extends Controller
         //dd($challenges);
         return view('submits.index', compact('challenges'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.

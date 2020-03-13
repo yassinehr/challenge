@@ -91,9 +91,13 @@ class ChallengePolicy
      * @param  \App\Challenge  $challenge
      * @return mixed
      */
-    public function restore(User $user, Challenge $challenge)
+    public function restore(User $user)
     {
         //
+
+        return in_array($user->authority, [
+            'participant'
+        ]);
     }
 
     /**
